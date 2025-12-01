@@ -51,4 +51,35 @@ while True:
 
 # 4
 mtz = np.zeros((np.random.randint(0, 10), np.random.randint(0, 10)))
-print(mtz.shape)
+l, c = mtz.shape
+if l*c % 2 == 0:
+    print("A matriz tem um número par de elementos.")
+else:
+    print("A matriz tem um número ímpar de elementos.")
+
+
+# 5
+np.random.seed(10)
+mtz4 = np.random.randint(1, 51, size=(4, 4))
+medias_linhas = np.array([])
+medias_colunas = np.array([])
+
+for i in range(4):
+    print("Média da linha", i+1, ":", mtz4[i].mean())
+    medias_linhas = np.append(medias_linhas, mtz4[i].mean())
+    print("Média da coluna", i+1, ":", mtz4[:, i].mean())
+    medias_colunas = np.append(medias_colunas, mtz4[:, i].mean())
+
+print("Maior média entre as linhas:", medias_linhas.max())
+print("Maior média entre as colunas:", medias_colunas.max())
+
+numeros = np.unique(mtz4, return_counts=True)
+print("Números que se repetem e suas quantidades:")
+for num, count in zip(numeros[0], numeros[1]):
+    print(f"Número {num} aparece {count} vezes")
+
+for num, count in zip(numeros[0], numeros[1]):
+    if count == 2:
+        print(f"Número {num} aparece exatamente duas vezes")
+
+
